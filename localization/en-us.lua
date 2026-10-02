@@ -1349,6 +1349,8 @@ return {
 			k_minorleague_description = "Official Minor League Balatro ruleset.\n\nVanilla cards with competitive settings:\n- 210 second timer\n- The Order enabled\n- First timeout forgiven\n- Attrition gamemode",
 			k_wsob = "WSOB",
 			k_wsob_description = "World Series of Balatro ruleset.\n\nNear-vanilla card pool with minimal balance changes:\n- Hanging Chad, Bloodstone, and Glass reworked\n- Justice banned\n- No Multiplayer-original content\n\n(See bans and reworks tabs for details)",
+			k_conjoined = "Conjoined",
+			k_conjoined_description = "Ruleset for the Conjoined tournament.\n\nStandard Ranked cards, more time to talk with your teammate:\n- 300s timer per ante, runs on its own, paused by animations\n- +100s before the first PvP\n- PvP timer if timered: 90s, +15s per hand\n- 4 lives, PvP from ante 2, The Order on, Skip-Off banned\n- Opponent's score hidden until you play a hand\n\n(See bans and reworks tabs for details)",
 			k_standard_ranked = "Standard Ranked",
 			k_standard_ranked_description = "The official competitive ruleset.\n\nStandard ruleset with locked settings:\n- Attrition gamemode\n- The Order enabled\n- Requires recommended Steamodded version",
 			k_legacy_ranked = "Legacy Ranked",

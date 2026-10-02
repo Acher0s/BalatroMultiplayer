@@ -1,56 +1,15 @@
+-- Tournament build: Conjoined is the only selectable ruleset. The other
+-- rulesets are still registered (old replays and defaults reference them),
+-- they just aren't offered here.
 local rulesets_tabs = {
 	default = {
-		{
-			name = "k_mp_ruleset_tab_general",
-			data = {
-				{
-					name = "k_matchmaking",
-					buttons = {
-						{ button_id = "standard_ranked_ruleset_button", button_localize_key = "k_standard_ranked" },
-						{ button_id = "legacy_ranked_ruleset_button", button_localize_key = "k_legacy_ranked" },
-						{ button_id = "smallworld_ruleset_button", button_localize_key = "k_smallworld" },
-						{ button_id = "sandbox_ruleset_button", button_localize_key = "k_sandbox" },
-					},
-				},
-				{
-					name = "k_custom",
-					buttons = {
-						{ button_id = "blitz_ruleset_button", button_localize_key = "k_blitz" },
-						{ button_id = "traditional_ruleset_button", button_localize_key = "k_traditional" },
-						{ button_id = "vanilla_ruleset_button", button_localize_key = "k_vanilla" },
-					},
-				},
-			},
-		},
 		{
 			name = "k_mp_ruleset_tab_tournaments",
 			data = {
 				{
 					name = "k_tournament",
 					buttons = {
-						{ button_id = "majorleague_ruleset_button", button_localize_key = "k_majorleague" },
-						{ button_id = "minorleague_ruleset_button", button_localize_key = "k_minorleague" },
-						{ button_id = "wsob_ruleset_button", button_localize_key = "k_wsob" },
-					},
-				},
-				{
-					name = "k_custom",
-					buttons = {
-						{ button_id = "speedlatro_ruleset_button", button_localize_key = "k_speedlatro" },
-						{ button_id = "badlatro_ruleset_button", button_localize_key = "k_badlatro" },
-						{ button_id = "chaos_ruleset_button", button_localize_key = "k_chaos" },
-					},
-				},
-			},
-		},
-		{
-			name = "k_mp_ruleset_tab_experimental",
-			data = {
-				{
-					name = "k_experimental",
-					buttons = {
-						{ button_id = "experimental_ruleset_button", button_localize_key = "k_experimental_standard" },
-						{ button_id = "experimental_legacy_ruleset_button", button_localize_key = "k_experimental_legacy" },
+						{ button_id = "conjoined_ruleset_button", button_localize_key = "k_conjoined" },
 					},
 				},
 			},
@@ -69,15 +28,7 @@ function G.UIDEF.ruleset_selection_tabs(mode, chosen_label)
 			end,
 		})
 	end
-	-- Bespoke custom-ruleset editor tab (raw strings, no loc keys yet).
-	if MP.UI.build_custom_ruleset_editor then
-		table.insert(tabs, {
-			label = "Custom",
-			tab_definition_function = function()
-				return MP.UI.build_custom_ruleset_editor(mode)
-			end,
-		})
-	end
+	-- The custom-ruleset editor tab is left out in the tournament build.
 	-- Open on a specific tab when asked (e.g. returning from the ban picker),
 	-- otherwise default to the first.
 	local chose = false
@@ -158,7 +109,7 @@ function G.FUNCS.change_ruleset_selection(e)
 
 	-- this currently doesn't work properly
 	-- local default_button = mode == "sp" and "vanilla_ruleset_button" or "standard_ranked_ruleset_button"
-	local default_button = MP.UI.ruleset_selection_default_button or "standard_ranked_ruleset_button"
+	local default_button = MP.UI.ruleset_selection_default_button or "conjoined_ruleset_button"
 
 	MP.UI.Change_Main_Lobby_Options(
 		e,

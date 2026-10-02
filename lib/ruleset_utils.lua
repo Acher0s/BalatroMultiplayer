@@ -12,6 +12,13 @@ function MP.UTILS.timer_base()
 	return base * mult
 end
 
+-- Timer for the very first stretch of a game. With PvP starting at ante 2, that stretch
+-- covers all of ante 1 plus ante 2's small and big blind on one clock, so a ruleset can
+-- add first_pvp_timer_bonus_seconds on top. Later stretches reset to timer_base().
+function MP.UTILS.first_timer_base()
+	return MP.UTILS.timer_base() + (MP.current_ruleset().first_pvp_timer_bonus_seconds or 0)
+end
+
 -- Base PvP timer in seconds, accounting for the active ruleset's pvp_timer_base_multiplier
 -- (set by layers like pvp_timer). The multiplier is applied at timer-init sites,
 -- so the lobby UI keeps showing the unmultiplied base.
